@@ -18,7 +18,7 @@ requests
 - Employees may add a note or attachment.
 - Someone above them reviews it.
 - The request gets approved, rejected, or sent back.W
-  \*If approved, the balance changes and the calendar of availability changes too.
+- If approved, the balance changes and the calendar of availability changes too.
 
 * HR may define leave policies.
 * The company may have annual leave, sick leave, unpaid leave, emergency leave, compensatory leave.
