@@ -59,6 +59,10 @@ A company needs a controlled way to represent employee time away from work, deci
 
 # Use Case (Manage Time)
 
+## ERD
+
+![This is an alt text.](/diagrams/ERD.png "This is a sample image.")
+
 ## Flow Chart
 
-![This is an alt text.](/diagrams/FlowChartCreateRequestLeave.jpeg "This is a sample image.")
+![This is an alt text.](/diagrams/FlowChartCreateRequestLeave.jpg "This is a sample image.")
