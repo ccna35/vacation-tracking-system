@@ -38,3 +38,59 @@ GROUP BY
     c.first_name,
     c.last_name
 HAVING SUM(o.total_amount) > 500;
+
+-- SQL query to search for all products with the word "camera" in either the product name or description.
+SELECT 
+    p.product_id,
+    p.category_id,
+    p.name,
+    p.description,
+    p.price,
+    p.stock_quantity
+FROM
+    product p
+WHERE
+    p.name LIKE '%camera%' 
+UNION SELECT 
+    p.product_id,
+    p.category_id,
+    p.name,
+    p.description,
+    p.price,
+    p.stock_quantity
+FROM
+    product p
+WHERE
+    p.description LIKE '%camera%'
+
+-- a query to suggest popular products in the same category for the same author,
+-- excluding the Purchased product from the recommendations?
+SELECT 
+    p.product_id,
+    p.name,
+    c.category_name,
+    COUNT(od.product_id) AS sales
+FROM
+    product p
+        JOIN
+    order_details od ON od.product_id = p.product_id
+        JOIN
+    orders o ON od.order_id = o.order_id
+        JOIN
+    category c ON c.category_id = p.category_id
+WHERE
+    c.category_id = 3
+        AND p.product_id NOT IN (SELECT 
+            p.product_id
+        FROM
+            product p
+                JOIN
+            order_details od ON od.product_id = p.product_id
+                JOIN
+            orders o ON o.order_id = od.order_id
+                JOIN
+            customer c ON c.customer_id = o.customer_id
+        WHERE
+            c.customer_id = 4)
+GROUP BY p.product_id , p.name
+ORDER BY sales DESC
